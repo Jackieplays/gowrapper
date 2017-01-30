@@ -5,7 +5,7 @@ import wr "github.com/gowrapper"
 
 func main() {
 	list := []int{1, 2, 3, 4}
-	in := make(chan wr.Wrap, len(list))
+	in := make(chan wr.Wrap)
 	for x := range list {
 		in <- x
 	}
