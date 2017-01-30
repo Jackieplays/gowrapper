@@ -4,8 +4,8 @@ type ReducerFunc func(Wrap, Wrap) Wrap
 
 func Reducer(fn ReducerFunc, in chan Wrap) chan Wrap {
 	defer close(in)
-	out := make(chan Wrap)
-	var Wrap accum
+	out := make(chan Wrap, len(in))
+	var accum Wrap
 	for ele := range in {
 		if accum == nil {
 			accum = ele
